@@ -1,20 +1,26 @@
 {
-    "name": "nezamy/route",
+    "name": "kenlog/route-custom",
     "type": "library",
-    "description": "Route - Fast, flexible routing for PHP, enabling you to quickly and easily build RESTful web applications.",
-    "keywords": ["route", "restful", "api", "justframework"],
-    "homepage": "https://nezamy.com/route",
+    "description": "Route - Fast, flexible routing for PHP, enabling you to quickly and easily build RESTful web applications. This is a custom version of nezamy/route with updates for PHP 8 compatibility.",
+    "keywords": ["route", "restful", "api", "justframework", "php8", "custom"],
+    "homepage": "https://github.com/kenlog/route",
     "license": "MIT",
     "authors": [
         {
             "name": "Mahmoud Elnezamy",
             "email": "mahmoud@nezamy.com",
             "homepage": "http://nezamy.com",
-            "role": "Full Stack Web Developer"
+            "role": "Original Author"
+        },
+        {
+            "name": "Valentino Pesce",
+            "email": "valentino@iltuobrand.it",
+            "homepage": "https://github.com/kenlog",
+            "role": "Maintainer of the PHP 8 Compatible Fork"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=8.0",
         "nezamy/support": "1.0.*"
     },
     "autoload": {

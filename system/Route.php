@@ -13,6 +13,7 @@
 namespace System;
 
 use Closure;
+use System\Request;
 use System\Support\Str;
 
 /**
@@ -61,6 +62,8 @@ class Route
     public $Method;
     private $before = [];
     private $after = [];
+    private $req;
+    public $app;
 
     /**
      * Constructor - Define some variables.
@@ -179,7 +182,7 @@ class Route
         // Add this group and sub-groups to append to route uri.
         $this->group .= $group;
         // Bind to Route Class.
-//        $callback = $callback->bindTo($this);
+        //$callback = $callback->bindTo($this);
         $callback = Closure::bind($callback, $this, get_class());
         // Call with args.
         call_user_func_array($callback, $this->bindArgs($this->pramsGroup, $this->matchedArgs));
@@ -228,7 +231,7 @@ class Route
             $this->route(['DELETE'], $deleteMulti, [$controller, 'destroy'], $options)->_as($as.'.destroy');
 
 
-            $this->route([], $uri . '/*', function (Request $req, Response $res) {
+            $this->route([], $uri . '/*', function (Request $req, $res) {
                 http_response_code(404);
                 $res->json(['error'=>'resource 404']);
             });
@@ -263,7 +266,7 @@ class Route
                     $fullUri = $uri;
                 }
                 $methods = explode('_', $request);
-                $this->route($request, $fullUri, $call, $options)->_as($as);
+                $this->route([$request], $fullUri, $call, $options)->_as($as);
             }
         } else {
             throw new \Exception("Not found Controller {$controller} try with namespace");
@@ -624,7 +627,7 @@ class Route
             if (is_callable($callback) && $callback instanceof \Closure) {
                 // Set new object and append the callback with some data.
                 $o = new \ArrayObject($args);
-                $o->app = App::instance();
+                $o['app'] = App::instance();
                 $callback = $callback->bindTo($o);
             } elseif (is_string($callback) && strpos($callback, '@') !== false) {
                 $fixcallback = explode('@', $callback, 2);

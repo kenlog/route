@@ -23,6 +23,42 @@ class Request
 {
     private static $instance;
 
+    public $server;
+
+    public $path;
+
+    public $hostname;
+
+    public $secure;
+
+    public $protocol;
+
+    public $servername;
+
+    public $url;
+
+    public $query;
+    
+    public $headers;
+
+    public $body;
+
+    public $method;
+
+    public $ajax;
+
+    public $args;
+
+    public $port;
+
+    public $curl;
+
+    public $extension;
+
+    public $files;
+
+    public $cookies;
+
     /**
      * Constructor - Define some variables.
      */

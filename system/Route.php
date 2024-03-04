@@ -183,7 +183,7 @@ class Route
         $this->group .= $group;
         // Bind to Route Class.
         //$callback = $callback->bindTo($this);
-        $callback = Closure::bind($callback, $this, get_class());
+        $callback = Closure::bind($callback, $this, get_class($this));
         // Call with args.
         call_user_func_array($callback, $this->bindArgs($this->pramsGroup, $this->matchedArgs));
 

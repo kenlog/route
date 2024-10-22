@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "kenlog/support-custom": "dev-master"
+        "kenlog/support-custom": "1.*.*"
     },
     "autoload": {
         "psr-4": {

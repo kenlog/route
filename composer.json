@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^7.4 || ^8.0",
-        "nezamy/support": "1.0.*"
+        "kenlog/support-custom": "dev-master"
     },
     "autoload": {
         "psr-4": {
